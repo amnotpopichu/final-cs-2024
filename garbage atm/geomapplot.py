@@ -3,7 +3,7 @@ import pandas as pd
 
 
 # Import data from USGS
-data = pd.read_csv('income.csv')
+data = pd.read_csv('a.csv')
 
 
 # Drop rows with missing or invalid values in the 'mag' column
@@ -11,7 +11,7 @@ data = data.dropna(subset=['Lat'])
 data = data.dropna(subset=['Lon'])
 data = data.dropna(subset=['Median'])
 data = data.dropna(subset=['City'])
-data = data[data.Median >= 100000]
+data = data[data.Median >= 80000]
 
 
 # Create scatter map

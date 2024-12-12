@@ -1,0 +1,1 @@
+import plotly.express as px, pandas as pd; data = pd.read_csv('sheet7.csv'); data = data.dropna(subset=['Age']); data = data.dropna(subset=['Sleep Hours']); fig = px.scatter(data, x="Age",y="Sleep Hours", color = "Gender", hover_name = "Role", title='Nueva Census Dataset'); fig.show() 
