@@ -59,13 +59,11 @@ for e in states:
 
     top_10_cities = state_data.get(state_input, [])
 
-    # Sort word frequencies by salary and trim to match wordamt
     sorted_frequencies = sorted(top_10_cities, key=lambda x: float(x[2]), reverse=True)[:wordamt]
 
     word_frequencies = {}
     cities_color = {}
 
-    # Add "median" with salary of 59228
     word_frequencies["median"] = 59228
     cities_color["median"] = "red"
 

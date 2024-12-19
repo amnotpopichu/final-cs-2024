@@ -6,10 +6,8 @@ import os
 import csv
 from wordcloud import WordCloud, STOPWORDS
 
-# Get the working directory
 d = path.dirname(__file__) if "__file__" in locals() else os.getcwd()
 
-# Load state sizes from the CSV file
 state_sizes = {}
 with open('/Users/leohsia/Documents/coding projects/geomapping-median-salary/final/statesizes.csv', mode='r') as file:
     reader = csv.reader(file)
@@ -19,7 +17,6 @@ with open('/Users/leohsia/Documents/coding projects/geomapping-median-salary/fin
         size_in_miles = float(row[1]) 
         state_sizes[state_name] = size_in_miles
 
-# Calculate `wordamt` based on state size
 state_input = input("Enter the state name (e.g., 'california'): ").strip().lower()
 state_size = state_sizes.get(state_input)
 if state_size is None:
@@ -35,7 +32,6 @@ if not os.path.exists(state_image_path):
 
 mask = np.array(Image.open(state_image_path))
 
-# Load city data into dictionaries for top and bottom rankings
 state_data = {}
 state_data_reversed = {}
 with open('/Users/leohsia/Documents/coding projects/geomapping-median-salary/final/sorted_data.csv', mode='r') as file:
@@ -56,7 +52,6 @@ with open('/Users/leohsia/Documents/coding projects/geomapping-median-salary/fin
             state_data_reversed[state] = []
         state_data_reversed[state].append(row)
 
-# Get top and bottom cities for the entered state
 top_10_cities = state_data.get(state_input, [])[:round(wordamt / 2)]
 bottom_10_cities = state_data_reversed.get(state_input, [])[:wordamt - len(top_10_cities)]
 
@@ -64,23 +59,21 @@ if not top_10_cities and not bottom_10_cities:
     print(f"Error: No data found for state '{state_input}'.")
     exit(1)
 
-# Prepare data for the word cloud
 word_frequencies = {}
 cities_color = {}
 
 for row in top_10_cities:
-    city = row[1]  # Assuming 'City' is in the second column
+    city = row[1]  
     word_frequencies[city] = word_frequencies.get(city, 0) + 1
-    cities_color[city] = "green"  # Top-ranked cities are green
+    cities_color[city] = "green"  
 
 for row in bottom_10_cities:
     city = row[1]
     word_frequencies[city] = word_frequencies.get(city, 0) + 1
-    cities_color[city] = "red"  # Bottom-ranked cities are red
+    cities_color[city] = "red"  
 
-# Define custom color function
 def custom_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
-    return cities_color.get(word, "black")  # Default to black if no color is defined
+    return cities_color.get(word, "black")  
 print("Top 10 cities:", top_10_cities)
 print("Bottom 10 cities:", bottom_10_cities)
 
