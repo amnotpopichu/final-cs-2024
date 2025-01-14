@@ -7,9 +7,9 @@ import csv
 from wordcloud import WordCloud, STOPWORDS
 
 d = path.dirname(__file__) if "__file__" in locals() else os.getcwd()
-
+filename = ""
 state_sizes = {}
-with open('/Users/leohsia/Documents/coding projects/geomapping-median-salary/final/statesizes.csv', mode='r') as file:
+with open(filename, mode='r') as file:
     reader = csv.reader(file)
     header = next(reader)
     for row in reader:
