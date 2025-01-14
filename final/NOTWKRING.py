@@ -34,7 +34,7 @@ mask = np.array(Image.open(state_image_path))
 
 state_data = {}
 state_data_reversed = {}
-with open('/Users/leohsia/Documents/coding projects/geomapping-median-salary/final/sorted_data.csv', mode='r') as file:
+with open(filename, mode='r') as file:
     reader = csv.reader(file)
     header = next(reader)
     for row in reader:
@@ -43,7 +43,7 @@ with open('/Users/leohsia/Documents/coding projects/geomapping-median-salary/fin
             state_data[state] = []
         state_data[state].append(row)
 
-with open('/Users/leohsia/Documents/coding projects/geomapping-median-salary/final/reversed_data.csv', mode='r') as file:
+with open(filename, mode='r') as file:
     reader = csv.reader(file)
     header = next(reader)
     for row in reader:
