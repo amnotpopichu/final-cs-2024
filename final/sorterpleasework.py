@@ -23,9 +23,9 @@ with open('sorted_data.csv', mode='w', newline='') as file:
 
 #sorter#2
 import csv
-
+csvfile = ""
 # Open the original CSV file
-with open('/Users/leohsia/Documents/coding projects/geomapping-median-salary/final/sorted_data.csv', mode='r') as infile:
+with open(csvfile, mode='r') as infile:
     reader = csv.reader(infile)
     
     # Read all rows into a list
