@@ -46,9 +46,9 @@ for e in states:
         exit(1)
 
     mask = np.array(Image.open(state_image_path))
-
+filename = ""
     state_data = {}
-    with open('/Users/leohsia/Documents/coding projects/geomapping-median-salary/final/sorted_data.csv', mode='r') as file:
+    with open(filename, mode='r') as file:
         reader = csv.reader(file)
         header = next(reader)
         for row in reader:
